@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://v4njcsjruxm7"]
+
+[ext_resource type="Script" uid="uid://cp3821pertmc7" path="res://app/scripts/audio_manager.gd" id="1_8h47m"]
+[ext_resource type="AudioStream" uid="uid://7yyla0qbuk76" path="res://app/assets/sounds/break_finished.mp3" id="2_j52f5"]
+[ext_resource type="AudioStream" uid="uid://dgyymy5r6fevo" path="res://app/assets/sounds/button.mp3" id="3_uhmww"]
+[ext_resource type="AudioStream" uid="uid://5itwycayr8vn" path="res://app/assets/sounds/menu.mp3" id="4_abbdm"]
+[ext_resource type="AudioStream" uid="uid://blmvfk0k32yni" path="res://app/assets/sounds/work_finished.mp3" id="5_srnkf"]
+
+[node name="audio manager" type="Node"]
+script = ExtResource("1_8h47m")
+
+[node name="break_finished" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_j52f5")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uhmww")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_abbdm")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="work_finished" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_srnkf")
+volume_db = 10.0
+bus = &"SFX"

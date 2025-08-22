@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://0nqgr0b24wfr"]
+
+[ext_resource type="PackedScene" uid="uid://c42gelag4evva" path="res://app/scenes/apps/schem.tscn" id="1_ldecp"]
+[ext_resource type="Script" uid="uid://ea32vlgl3j5m" path="res://app/scripts/apps/notes.gd" id="2_3njgh"]
+[ext_resource type="FontFile" uid="uid://bjsl2cf22ubm" path="res://app/assets/fonts/MononokiNerdFontMono-Regular.ttf" id="2_rwfam"]
+
+[node name="notes" instance=ExtResource("1_ldecp")]
+script = ExtResource("2_3njgh")
+
+[node name="background" type="ColorRect" parent="." index="1"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 1256.0
+offset_bottom = 744.0
+color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[node name="notes" type="TextEdit" parent="." index="2"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 736.0
+theme_override_colors/background_color = Color(0.85098, 0.85098, 0.85098, 1)
+theme_override_colors/font_placeholder_color = Color(0.521141, 0.521141, 0.521141, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0.674815, 0.674815, 0.674815, 1)
+theme_override_colors/caret_background_color = Color(0.521569, 0.521569, 0.521569, 1)
+theme_override_colors/caret_color = Color(0.521569, 0.521569, 0.521569, 1)
+theme_override_constants/caret_width = 12
+theme_override_fonts/font = ExtResource("2_rwfam")
+theme_override_font_sizes/font_size = 30
+placeholder_text = "notes"
+context_menu_enabled = false
+wrap_mode = 1
+autowrap_mode = 2
+caret_blink = true
+caret_blink_interval = 0.2
+use_default_word_separators = false
+use_custom_word_separators = true
+custom_word_separators = "-"
+highlight_all_occurrences = true
+
+[connection signal="text_changed" from="notes" to="." method="_on_notes_text_changed"]

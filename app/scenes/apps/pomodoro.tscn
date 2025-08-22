@@ -1,0 +1,207 @@
+[gd_scene load_steps=15 format=3 uid="uid://c0xmpy4w28tw"]
+
+[ext_resource type="PackedScene" uid="uid://c42gelag4evva" path="res://app/scenes/apps/schem.tscn" id="1_q43yx"]
+[ext_resource type="FontFile" uid="uid://y4i3q5orpibv" path="res://app/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf" id="2_nbf1j"]
+[ext_resource type="Script" uid="uid://cek02pj1mfyhl" path="res://app/scripts/apps/pomodoro.gd" id="2_xqge4"]
+[ext_resource type="FontFile" uid="uid://bjpvol8rhvix7" path="res://app/assets/fonts/CaskaydiaMonoNerdFontMono-Regular.ttf" id="3_xqge4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ricr6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v82cx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dwb3f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6v68"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7md64"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ngvo3"]
+font = ExtResource("3_xqge4")
+font_color = Color(0.270222, 0.270222, 0.270222, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ricr6"]
+font = ExtResource("3_xqge4")
+font_size = 12
+font_color = Color(0.270222, 0.270222, 0.270222, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nbf1j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqge4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngvo3"]
+
+[node name="pomodoro" instance=ExtResource("1_q43yx")]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = -0.02
+anchor_right = 0.4
+anchor_bottom = 0.62
+script = ExtResource("2_xqge4")
+metadata/_edit_use_anchors_ = true
+
+[node name="app-container" parent="." index="0"]
+visible = false
+
+[node name="background" type="ColorRect" parent="." index="1"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 448.0
+offset_bottom = 512.0
+color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[node name="buttons" type="Control" parent="." index="2"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="start" type="Button" parent="buttons" index="0"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 152.0
+offset_right = 234.0
+offset_bottom = 200.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0.788235, 0, 1)
+theme_override_colors/font_hover_color = Color(0.419813, 0.419813, 0.419813, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nbf1j")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ricr6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_v82cx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dwb3f")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_b6v68")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7md64")
+text = "start"
+flat = true
+alignment = 0
+
+[node name="stop" type="Button" parent="buttons" index="1"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 216.0
+offset_right = 234.0
+offset_bottom = 264.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0.788235, 0, 1)
+theme_override_colors/font_hover_color = Color(0.419813, 0.419813, 0.419813, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nbf1j")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ricr6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_v82cx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dwb3f")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_b6v68")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7md64")
+text = "stop"
+flat = true
+alignment = 0
+
+[node name="toggle" type="Button" parent="buttons" index="2"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 280.0
+offset_right = 360.0
+offset_bottom = 328.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0.788235, 0, 1)
+theme_override_colors/font_hover_color = Color(0.419813, 0.419813, 0.419813, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nbf1j")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ricr6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_v82cx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dwb3f")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_b6v68")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7md64")
+text = "toggle pause"
+flat = true
+alignment = 0
+
+[node name="labels" type="Control" parent="." index="3"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="labels" index="0"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 136.0
+offset_right = 296.0
+offset_bottom = 159.0
+text = "# Start pomodoro / switch "
+label_settings = SubResource("LabelSettings_ngvo3")
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="labels" index="1"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 200.0
+offset_right = 296.0
+offset_bottom = 223.0
+text = "# Stop pomodoro "
+label_settings = SubResource("LabelSettings_ngvo3")
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="labels" index="2"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 328.0
+offset_right = 418.0
+offset_bottom = 369.0
+text = "# Customize session durations,
+  default is 25/5; enter value
+  in minute. Type enter when 
+  you have finished. 
+  (Will stop current pomodro)"
+label_settings = SubResource("LabelSettings_ricr6")
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="labels" index="3"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 264.0
+offset_right = 380.0
+offset_bottom = 287.0
+text = "# Pause or resume pomodoro"
+label_settings = SubResource("LabelSettings_ngvo3")
+vertical_alignment = 1
+
+[node name="work_input" type="LineEdit" parent="." index="4"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 424.0
+offset_right = 392.0
+offset_bottom = 455.0
+theme_override_colors/font_placeholder_color = Color(0.450648, 0.450648, 0.450648, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nbf1j")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nbf1j")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_xqge4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ngvo3")
+text = "25"
+placeholder_text = "work duration"
+max_length = 2
+flat = true
+
+[node name="break_input" type="LineEdit" parent="." index="5"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 464.0
+offset_right = 400.0
+offset_bottom = 495.0
+theme_override_colors/font_placeholder_color = Color(0.450648, 0.450648, 0.450648, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_nbf1j")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nbf1j")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_xqge4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ngvo3")
+text = "5"
+placeholder_text = "break duration"
+max_length = 2
+flat = true
+
+[connection signal="pressed" from="buttons/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="buttons/stop" to="." method="_on_stop_pressed"]
+[connection signal="pressed" from="buttons/toggle" to="." method="_on_toggle_pressed"]
+[connection signal="text_submitted" from="work_input" to="." method="_on_work_input_text_submitted"]
+[connection signal="text_submitted" from="break_input" to="." method="_on_break_input_text_submitted"]
