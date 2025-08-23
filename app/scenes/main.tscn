@@ -140,9 +140,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 384.0
+offset_left = 464.0
 offset_top = 752.0
-offset_right = 512.0
+offset_right = 592.0
 offset_bottom = 800.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -158,9 +158,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 736.0
+offset_left = 688.0
 offset_top = 752.0
-offset_right = 1072.0
+offset_right = 1024.0
 offset_bottom = 800.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -177,7 +177,6 @@ layout_mode = 1
 anchors_preset = 0
 
 [node name="notes" parent="apps-container" instance=ExtResource("5_a4s8r")]
-visible = false
 layout_mode = 1
 
 [node name="pomodoro" parent="apps-container" instance=ExtResource("6_6wfk4")]
@@ -189,7 +188,6 @@ offset_right = 64.0
 offset_bottom = -16.0
 
 [node name="focus" parent="apps-container" instance=ExtResource("8_4tvav")]
-visible = false
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0

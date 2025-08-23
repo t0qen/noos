@@ -10,9 +10,7 @@ func change_date(new_value):
 
 func change_clock(new_value):
 	$clock.text = new_value
-	
-func change_state(new_value):
-	$state.text = new_value
+
 	
 	
 	

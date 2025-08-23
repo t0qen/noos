@@ -179,15 +179,15 @@ func update_pomo_state_display():
 
 	match current_pomo_state:
 		POMO_STATE.NOTLAUNCHED:
-			update_pomo_label("NOT LAUNCHED")
+			update_pomo_state("NOT LAUNCHED")
 		POMO_STATE.WORK:
-			update_pomo_label("WORKING")
+			update_pomo_state("WORKING")
 		POMO_STATE.BREAK:
-			update_pomo_label("BREAK")
+			update_pomo_state("BREAK")
 		POMO_STATE.PAUSED:
-			update_pomo_label("PAUSED")
+			update_pomo_state("PAUSED")
 		POMO_STATE.STOPPED:
-			update_pomo_label("STOPPED")
+			update_pomo_state("STOPPED")
 
 func update_pomo_label(value):
 	pomo_label.text = value
@@ -195,7 +195,6 @@ func update_pomo_label(value):
 	
 func update_pomo_state(value):
 	state_label.text = value
-	focus_node.change_state(value)
 
 
 func _on_pomodoro_start_pomo() -> void:
