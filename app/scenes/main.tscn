@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d044efxhevqao"]
+[gd_scene load_steps=19 format=4 uid="uid://d044efxhevqao"]
 
 [ext_resource type="Script" uid="uid://y81ifsap2bbd" path="res://app/scripts/main.gd" id="1_f5sui"]
 [ext_resource type="FontFile" uid="uid://csjontt8cwpdh" path="res://app/assets/fonts/0xProtoNerdFontMono-Regular.ttf" id="2_114d7"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://d1n0ho86latqk" path="res://app/assets/fonts/0xProtoNerdFontPropo-Bold.ttf" id="5_6wfk4"]
 [ext_resource type="PackedScene" uid="uid://0nqgr0b24wfr" path="res://app/scenes/apps/notes.tscn" id="5_a4s8r"]
 [ext_resource type="PackedScene" uid="uid://c0xmpy4w28tw" path="res://app/scenes/apps/pomodoro.tscn" id="6_6wfk4"]
+[ext_resource type="PackedScene" uid="uid://dha8ggw31lj02" path="res://app/scenes/apps/focus.tscn" id="8_4tvav"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4tvav"]
 font_size = 41
@@ -180,24 +181,30 @@ visible = false
 layout_mode = 1
 
 [node name="pomodoro" parent="apps-container" instance=ExtResource("6_6wfk4")]
+visible = false
 layout_mode = 1
 offset_left = 64.0
 offset_top = -16.0
 offset_right = 64.0
 offset_bottom = -16.0
 
+[node name="focus" parent="apps-container" instance=ExtResource("8_4tvav")]
+visible = false
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+
 [node name="apps" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
 
 [node name="menu" type="Control" parent="apps"]
-visible = false
 anchors_preset = 0
 
 [node name="background" type="ColorRect" parent="apps/menu"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 552.0
+offset_top = 528.0
 offset_right = 328.0
 offset_bottom = 792.0
 
@@ -246,6 +253,57 @@ text = "notes"
 label_settings = SubResource("LabelSettings_3hhq3")
 vertical_alignment = 1
 
+[node name="pomo_date" type="Label" parent="apps/menu/labels"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 616.0
+offset_right = 568.0
+offset_bottom = 672.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "focus on pomo"
+label_settings = SubResource("LabelSettings_3hhq3")
+vertical_alignment = 1
+
+[node name="coming" type="Label" parent="apps/menu/labels"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 576.0
+offset_right = 568.0
+offset_bottom = 632.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "coming soon"
+label_settings = SubResource("LabelSettings_3hhq3")
+vertical_alignment = 1
+
+[node name="quit" type="Label" parent="apps/menu/labels"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 536.0
+offset_right = 568.0
+offset_bottom = 592.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "quit app :("
+label_settings = SubResource("LabelSettings_3hhq3")
+vertical_alignment = 1
+
 [node name="btns" type="Control" parent="apps/menu"]
 layout_mode = 1
 anchors_preset = 0
@@ -269,6 +327,45 @@ offset_left = 16.0
 offset_top = 664.0
 offset_right = 328.0
 offset_bottom = 704.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_6wfk4")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a4s8r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6wfk4")
+flat = true
+
+[node name="pomo_date_btn" type="Button" parent="apps/menu/btns"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 624.0
+offset_right = 328.0
+offset_bottom = 664.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_6wfk4")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a4s8r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6wfk4")
+flat = true
+
+[node name="coming_btn" type="Button" parent="apps/menu/btns"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 584.0
+offset_right = 328.0
+offset_bottom = 624.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_6wfk4")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a4s8r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6wfk4")
+flat = true
+
+[node name="quit_btn" type="Button" parent="apps/menu/btns"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 544.0
+offset_right = 328.0
+offset_bottom = 584.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_6wfk4")
 theme_override_font_sizes/font_size = 26
@@ -306,8 +403,20 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3hhq3")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_2x37a")
 flat = true
 
+[node name="quit_dialog" type="ConfirmationDialog" parent="."]
+mode = 2
+title = "Quit menu"
+initial_position = 1
+size = Vector2i(350, 100)
+ok_button_text = "Quit"
+cancel_button_text = "No no I'm gonna focus on my work"
+
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
+
+[node name="break_modulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.687006, 0.967921, 0.730947, 1)
 
 [connection signal="break_duration_changed" from="apps-container/pomodoro" to="." method="_on_pomodoro_break_duration_changed"]
 [connection signal="start_pomo" from="apps-container/pomodoro" to="." method="_on_pomodoro_start_pomo"]
@@ -316,5 +425,9 @@ process_callback = 0
 [connection signal="work_duration_changed" from="apps-container/pomodoro" to="." method="_on_pomodoro_work_duration_changed"]
 [connection signal="pressed" from="apps/menu/btns/pomo_settings_btn" to="." method="_on_pomo_settings_btn_pressed"]
 [connection signal="pressed" from="apps/menu/btns/notes_btn" to="." method="_on_notes_btn_pressed"]
+[connection signal="pressed" from="apps/menu/btns/pomo_date_btn" to="." method="_on_pomo_date_btn_pressed"]
+[connection signal="pressed" from="apps/menu/btns/coming_btn" to="." method="_on_coming_btn_pressed"]
+[connection signal="pressed" from="apps/menu/btns/quit_btn" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="apps/toggle" to="." method="_on_toggle_pressed"]
+[connection signal="confirmed" from="quit_dialog" to="." method="_on_quit_dialog_confirmed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

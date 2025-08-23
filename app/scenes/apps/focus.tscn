@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://dha8ggw31lj02"]
+
+[ext_resource type="PackedScene" uid="uid://c42gelag4evva" path="res://app/scenes/apps/schem.tscn" id="1_s3tgs"]
+[ext_resource type="Script" uid="uid://op01unhwnsn7" path="res://app/scripts/apps/focus.gd" id="2_ltth3"]
+[ext_resource type="FontFile" uid="uid://d1n0ho86latqk" path="res://app/assets/fonts/0xProtoNerdFontPropo-Bold.ttf" id="2_q6tv2"]
+[ext_resource type="FontFile" uid="uid://y4i3q5orpibv" path="res://app/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf" id="3_ltth3"]
+[ext_resource type="FontFile" uid="uid://b3f143kxupihc" path="res://app/assets/fonts/MesloLGMNerdFontPropo-Bold.ttf" id="4_4p7rq"]
+[ext_resource type="FontFile" uid="uid://bjpvol8rhvix7" path="res://app/assets/fonts/CaskaydiaMonoNerdFontMono-Regular.ttf" id="4_li6sj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_li6sj"]
+font = ExtResource("2_q6tv2")
+font_size = 200
+font_color = Color(0.450648, 0.450648, 0.450648, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cy32f"]
+font = ExtResource("4_li6sj")
+font_size = 25
+font_color = Color(0.45098, 0.45098, 0.45098, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nijac"]
+font = ExtResource("3_ltth3")
+font_size = 48
+font_color = Color(0.629674, 0.629675, 0.629675, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fnrig"]
+font = ExtResource("4_4p7rq")
+font_size = 42
+font_color = Color(0.513233, 0.513233, 0.513233, 1)
+
+[node name="focus" instance=ExtResource("1_s3tgs")]
+offset_right = -1248.0
+offset_bottom = -768.0
+script = ExtResource("2_ltth3")
+
+[node name="pomo" type="Label" parent="." index="1"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 40.0
+offset_right = 1000.0
+offset_bottom = 320.0
+text = "25:00"
+label_settings = SubResource("LabelSettings_li6sj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="state" type="Label" parent="." index="2"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 272.0
+offset_right = 728.0
+offset_bottom = 302.0
+text = "NOT LAUNCHED"
+label_settings = SubResource("LabelSettings_cy32f")
+
+[node name="date" type="Label" parent="." index="3"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 640.0
+offset_right = 848.0
+offset_bottom = 704.0
+text = "blablabla"
+label_settings = SubResource("LabelSettings_nijac")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="clock" type="Label" parent="." index="4"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 584.0
+offset_right = 702.0
+offset_bottom = 642.0
+text = "12:05"
+label_settings = SubResource("LabelSettings_fnrig")
