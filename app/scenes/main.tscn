@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://d044efxhevqao"]
+[gd_scene load_steps=20 format=4 uid="uid://d044efxhevqao"]
 
 [ext_resource type="Script" uid="uid://y81ifsap2bbd" path="res://app/scripts/main.gd" id="1_f5sui"]
 [ext_resource type="FontFile" uid="uid://csjontt8cwpdh" path="res://app/assets/fonts/0xProtoNerdFontMono-Regular.ttf" id="2_114d7"]
 [ext_resource type="FontFile" uid="uid://dnaicopnpjhbb" path="res://app/assets/fonts/CaskaydiaMonoNerdFontMono-Italic.ttf" id="3_sagw5"]
+[ext_resource type="PackedScene" uid="uid://df6y383trua7o" path="res://app/scenes/apps/settings.tscn" id="4_3hhq3"]
 [ext_resource type="FontFile" uid="uid://dh22204q551x4" path="res://app/assets/fonts/JetBrainsMonoNerdFontMono-Regular.ttf" id="4_6wfk4"]
 [ext_resource type="FontFile" uid="uid://d1n0ho86latqk" path="res://app/assets/fonts/0xProtoNerdFontPropo-Bold.ttf" id="5_6wfk4"]
 [ext_resource type="PackedScene" uid="uid://0nqgr0b24wfr" path="res://app/scenes/apps/notes.tscn" id="5_a4s8r"]
@@ -168,13 +169,12 @@ text = "NOT LAUNCHED"
 label_settings = SubResource("LabelSettings_2x37a")
 vertical_alignment = 1
 
-[node name="buttons" type="Control" parent="bottom-bar"]
-layout_mode = 1
-anchors_preset = 0
-
 [node name="apps-container" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
+
+[node name="settings" parent="apps-container" instance=ExtResource("4_3hhq3")]
+layout_mode = 1
 
 [node name="notes" parent="apps-container" instance=ExtResource("5_a4s8r")]
 layout_mode = 1
@@ -268,7 +268,7 @@ text = "focus on pomo"
 label_settings = SubResource("LabelSettings_3hhq3")
 vertical_alignment = 1
 
-[node name="coming" type="Label" parent="apps/menu/labels"]
+[node name="settings" type="Label" parent="apps/menu/labels"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -281,7 +281,7 @@ offset_right = 568.0
 offset_bottom = 632.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "coming soon"
+text = "settings"
 label_settings = SubResource("LabelSettings_3hhq3")
 vertical_alignment = 1
 
@@ -345,7 +345,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_a4s8r")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_6wfk4")
 flat = true
 
-[node name="coming_btn" type="Button" parent="apps/menu/btns"]
+[node name="settings_btn" type="Button" parent="apps/menu/btns"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 584.0
@@ -409,12 +409,20 @@ size = Vector2i(350, 100)
 ok_button_text = "Quit"
 cancel_button_text = "No no I'm gonna focus on my work"
 
+[node name="pomo_restart_interval" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 
 [node name="break_modulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0.687006, 0.967921, 0.730947, 1)
+
+[node name="blue_light_filter" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.758818, 0.555032, 0.234345, 1)
 
 [connection signal="break_duration_changed" from="apps-container/pomodoro" to="." method="_on_pomodoro_break_duration_changed"]
 [connection signal="start_pomo" from="apps-container/pomodoro" to="." method="_on_pomodoro_start_pomo"]
@@ -424,8 +432,9 @@ color = Color(0.687006, 0.967921, 0.730947, 1)
 [connection signal="pressed" from="apps/menu/btns/pomo_settings_btn" to="." method="_on_pomo_settings_btn_pressed"]
 [connection signal="pressed" from="apps/menu/btns/notes_btn" to="." method="_on_notes_btn_pressed"]
 [connection signal="pressed" from="apps/menu/btns/pomo_date_btn" to="." method="_on_pomo_date_btn_pressed"]
-[connection signal="pressed" from="apps/menu/btns/coming_btn" to="." method="_on_coming_btn_pressed"]
+[connection signal="pressed" from="apps/menu/btns/settings_btn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="apps/menu/btns/quit_btn" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="apps/toggle" to="." method="_on_toggle_pressed"]
 [connection signal="confirmed" from="quit_dialog" to="." method="_on_quit_dialog_confirmed"]
+[connection signal="timeout" from="pomo_restart_interval" to="." method="_on_pomo_restart_interval_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

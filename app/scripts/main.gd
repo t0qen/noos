@@ -55,7 +55,8 @@ func _on_toggle_pressed() -> void:
 enum APPS {
 	POMO,
 	NOTES,
-	FOCUS
+	FOCUS,
+	SETTINGS
 }
 var current_app : APPS = APPS.NOTES
 
@@ -78,6 +79,9 @@ func update_app_display():
 			$"apps-container/focus".show()
 			$"bottom-bar/labels".hide()
 			apps_label.text = "x"
+		APPS.SETTINGS:
+			$"apps-container/settings".show()
+			apps_label.text = "settings"
 			
 			
 func _on_pomo_settings_btn_pressed() -> void:
@@ -95,9 +99,10 @@ func _on_pomo_date_btn_pressed() -> void:
 	current_app = APPS.FOCUS
 	update_app_display()
 
-func _on_coming_btn_pressed() -> void:
-	pass # Replace with function body.
-
+func _on_settings_btn_pressed() -> void:
+	AudioManager.play("button")
+	current_app = APPS.SETTINGS
+	update_app_display()
 
 func _on_quit_btn_pressed() -> void:
 	AudioManager.play("button")
@@ -144,7 +149,7 @@ func start_pomo():
 		current_pomo_state = POMO_STATE.WORK
 	elif current_pomo_state == POMO_STATE.WORK:
 		AudioManager.play("work")
-		$break_modulate.show()
+		break_modulation(true)
 		pomo_timer.start(break_value * 60)
 		current_pomo_state = POMO_STATE.BREAK
 	
@@ -229,9 +234,19 @@ func _on_pomodoro_break_duration_changed(new_value: int) -> void:
 	
 func _on_timer_timeout() -> void:
 	if current_pomo_state == POMO_STATE.BREAK:
-		$break_modulate.hide()
 		AudioManager.play("break")
+		break_modulation(false)
+		
+	current_pomo_state = POMO_STATE.NOTLAUNCHED
+	$pomo_restart_interval.start()
+	
+func _on_pomo_restart_interval_timeout() -> void:
 	start_pomo()
+
+func break_modulation(show : bool):
+	$break_modulate.visible = show
+	if is_blue_light_filter_enabled:
+		$blue_light_filter.visible = !show
 #endregion
 	
 	
@@ -246,13 +261,38 @@ func _physics_process(delta: float) -> void:
 	
 	
 func _ready() -> void:
+	SettingsManager.set_main(self)
 	update_app_display()
 	
+	var volume_file = FileAccess.open("user://volume.dat", FileAccess.READ)
 	var work_file = FileAccess.open("user://work_duration.dat", FileAccess.READ)
 	var break_file = FileAccess.open("user://break_duration.dat", FileAccess.READ)
+	if volume_file:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(int(volume_file.get_as_text())))
 	if work_file:
 		work_value = int(work_file.get_as_text())
 		print("WORK ", work_value)
 	if break_file:
 		break_value = int(break_file.get_as_text())
 		print("BREAK ", break_value)
+
+var is_blue_light_filter_enabled : bool = true
+func blue_light_filter(toggle : bool):
+	print(toggle)
+	is_blue_light_filter_enabled = toggle
+	$blue_light_filter.visible = toggle
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

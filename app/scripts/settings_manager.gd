@@ -2,12 +2,9 @@ extends Node
 
 var main_scene_node
 
-signal blue_light_filter(toggle : bool)
-
-
-
 func toggle_blue_light_filter(toggle : bool):
-	blue_light_filter.emit(toggle)
+	print("yes")
+	main_scene_node.blue_light_filter(toggle)
 	
 	
 func set_main(node):
