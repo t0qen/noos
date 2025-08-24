@@ -1,0 +1,193 @@
+[gd_scene load_steps=15 format=3 uid="uid://df6y383trua7o"]
+
+[ext_resource type="PackedScene" uid="uid://c42gelag4evva" path="res://app/scenes/apps/schem.tscn" id="1_mjjyt"]
+[ext_resource type="FontFile" uid="uid://b3f143kxupihc" path="res://app/assets/fonts/MesloLGMNerdFontPropo-Bold.ttf" id="2_r37u7"]
+[ext_resource type="Script" uid="uid://ccax6xg64kkmg" path="res://app/scripts/apps/settings.gd" id="2_y6p8u"]
+[ext_resource type="FontFile" uid="uid://dnaicopnpjhbb" path="res://app/assets/fonts/CaskaydiaMonoNerdFontMono-Italic.ttf" id="3_y6p8u"]
+[ext_resource type="FontFile" uid="uid://y4i3q5orpibv" path="res://app/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf" id="4_x65ee"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tapmq"]
+font = ExtResource("2_r37u7")
+font_size = 24
+font_color = Color(0.466181, 0.466181, 0.466181, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4qog7"]
+font = ExtResource("3_y6p8u")
+font_size = 23
+font_color = Color(0.466181, 0.466181, 0.466181, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_be3u2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1py6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j5n7g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hsdc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g368c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8v0f"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r37u7"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="settings" instance=ExtResource("1_mjjyt")]
+script = ExtResource("2_y6p8u")
+
+[node name="background" type="ColorRect" parent="." index="1"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 1256.0
+offset_bottom = 744.0
+color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[node name="settings" type="Control" parent="." index="2"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="main label" type="Label" parent="settings" index="0"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 638.0
+offset_bottom = 73.0
+text = "* Click on labels to toggle enable/disable (green on hover when toggled)"
+label_settings = SubResource("LabelSettings_tapmq")
+
+[node name="blue-light-filter" type="Control" parent="settings" index="1"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="settings/blue-light-filter" index="0"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 112.0
+offset_right = 777.0
+offset_bottom = 145.0
+text = "# Add an eyes comfort effect, nice for study at night"
+label_settings = SubResource("LabelSettings_4qog7")
+
+[node name="btn" type="Button" parent="settings/blue-light-filter" index="1"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 144.0
+offset_right = 370.0
+offset_bottom = 192.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0.788235, 0, 1)
+theme_override_colors/font_hover_color = Color(0.419813, 0.419813, 0.419813, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x65ee")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_be3u2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_m1py6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j5n7g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0hsdc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g368c")
+toggle_mode = true
+text = "blue light filter"
+flat = true
+alignment = 0
+
+[node name="fullscreen" type="Control" parent="settings" index="2"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="settings/fullscreen" index="0"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 200.0
+offset_right = 777.0
+offset_bottom = 233.0
+text = "# Set application in fullscreen"
+label_settings = SubResource("LabelSettings_4qog7")
+
+[node name="btn2" type="Button" parent="settings/fullscreen" index="1"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 232.0
+offset_right = 370.0
+offset_bottom = 280.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0.788235, 0, 1)
+theme_override_colors/font_hover_color = Color(0.419813, 0.419813, 0.419813, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x65ee")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_be3u2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_m1py6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j5n7g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0hsdc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g368c")
+toggle_mode = true
+text = "fullscreen"
+flat = true
+alignment = 0
+
+[node name="clear-data" type="Control" parent="settings" index="3"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="settings/clear-data" index="0"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 288.0
+offset_right = 777.0
+offset_bottom = 321.0
+text = "# Clear all saved data : notes, pomo settings, etc. Please restart app after."
+label_settings = SubResource("LabelSettings_4qog7")
+
+[node name="btn3" type="Button" parent="settings/clear-data" index="1"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 370.0
+offset_bottom = 368.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0.788235, 0, 1)
+theme_override_colors/font_hover_color = Color(0.419813, 0.419813, 0.419813, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_x65ee")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_be3u2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_m1py6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j5n7g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0hsdc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g368c")
+text = "clear user data"
+flat = true
+alignment = 0
+
+[node name="clear-data2" type="Control" parent="settings" index="4"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HSlider" type="HSlider" parent="settings/clear-data2" index="0"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 424.0
+offset_right = 328.0
+offset_bottom = 440.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_l8v0f")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_r37u7")
+max_value = 20.0
+step = 0.1
+value = 10.0
+
+[node name="Label" type="Label" parent="settings/clear-data2" index="1"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 376.0
+offset_right = 777.0
+offset_bottom = 409.0
+text = "# Change global volume off the app"
+label_settings = SubResource("LabelSettings_4qog7")
+
+[connection signal="toggled" from="settings/blue-light-filter/btn" to="." method="_on_btn_toggled"]
+[connection signal="toggled" from="settings/fullscreen/btn2" to="." method="_on_btn_2_toggled"]
+[connection signal="pressed" from="settings/clear-data/btn3" to="." method="_on_btn_3_pressed"]
+[connection signal="value_changed" from="settings/clear-data2/HSlider" to="." method="_on_h_slider_value_changed"]
