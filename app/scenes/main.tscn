@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=4 uid="uid://d044efxhevqao"]
+[gd_scene load_steps=21 format=4 uid="uid://d044efxhevqao"]
 
 [ext_resource type="Script" uid="uid://y81ifsap2bbd" path="res://app/scripts/main.gd" id="1_f5sui"]
 [ext_resource type="FontFile" uid="uid://csjontt8cwpdh" path="res://app/assets/fonts/0xProtoNerdFontMono-Regular.ttf" id="2_114d7"]
-[ext_resource type="FontFile" uid="uid://dnaicopnpjhbb" path="res://app/assets/fonts/CaskaydiaMonoNerdFontMono-Italic.ttf" id="3_sagw5"]
+[ext_resource type="FontFile" uid="uid://ma0dl2fhnwun" path="res://app/assets/fonts/0xProtoNerdFontMono-Italic.ttf" id="3_2x37a"]
+[ext_resource type="FontFile" uid="uid://b3f143kxupihc" path="res://app/assets/fonts/MesloLGMNerdFontPropo-Bold.ttf" id="4_2gjwp"]
 [ext_resource type="PackedScene" uid="uid://df6y383trua7o" path="res://app/scenes/apps/settings.tscn" id="4_3hhq3"]
 [ext_resource type="FontFile" uid="uid://dh22204q551x4" path="res://app/assets/fonts/JetBrainsMonoNerdFontMono-Regular.ttf" id="4_6wfk4"]
 [ext_resource type="FontFile" uid="uid://d1n0ho86latqk" path="res://app/assets/fonts/0xProtoNerdFontPropo-Bold.ttf" id="5_6wfk4"]
@@ -10,24 +11,25 @@
 [ext_resource type="PackedScene" uid="uid://c0xmpy4w28tw" path="res://app/scenes/apps/pomodoro.tscn" id="6_6wfk4"]
 [ext_resource type="PackedScene" uid="uid://dha8ggw31lj02" path="res://app/scenes/apps/focus.tscn" id="8_4tvav"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_4tvav"]
-font_size = 41
-font_color = Color(0.129558, 0.129558, 0.129558, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_sagw5"]
 font = ExtResource("2_114d7")
-font_size = 40
-font_color = Color(0.129558, 0.129558, 0.129558, 1)
+font_size = 41
+font_color = Color(0.362829, 0.362829, 0.362829, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2x37a"]
-font = ExtResource("3_sagw5")
-font_size = 33
-font_color = Color(0.129558, 0.129558, 0.129558, 1)
+font = ExtResource("3_2x37a")
+font_size = 41
+font_color = Color(0.154876, 0.154876, 0.154876, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4tvav"]
+font = ExtResource("4_2gjwp")
+font_size = 41
+font_color = Color(0.450648, 0.450648, 0.450648, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3hhq3"]
 font = ExtResource("4_6wfk4")
 font_size = 38
-font_color = Color(0.129558, 0.129558, 0.129558, 1)
+font_color = Color(0.45098, 0.45098, 0.45098, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a4s8r"]
 
@@ -116,24 +118,6 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 0
 
-[node name="clock" type="Label" parent="bottom-bar/labels"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 1127.0
-offset_top = 743.0
-offset_right = 1256.0
-offset_bottom = 800.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "11:28"
-label_settings = SubResource("LabelSettings_4tvav")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="pomo" type="Label" parent="bottom-bar/labels"]
 layout_mode = 1
 anchors_preset = 7
@@ -141,9 +125,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 464.0
-offset_top = 752.0
-offset_right = 592.0
+offset_left = 976.0
+offset_top = 744.0
+offset_right = 1104.0
 offset_bottom = 800.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -159,14 +143,33 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 688.0
-offset_top = 752.0
-offset_right = 1024.0
+offset_left = 448.0
+offset_top = 744.0
+offset_right = 832.0
 offset_bottom = 800.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "NOT LAUNCHED"
+text = "not launched"
 label_settings = SubResource("LabelSettings_2x37a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="clock" type="Label" parent="bottom-bar/labels"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 1120.0
+offset_top = 744.0
+offset_right = 1256.0
+offset_bottom = 801.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "11:28"
+label_settings = SubResource("LabelSettings_4tvav")
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="apps-container" type="Control" parent="."]
@@ -175,8 +178,11 @@ anchors_preset = 0
 
 [node name="settings" parent="apps-container" instance=ExtResource("4_3hhq3")]
 layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="notes" parent="apps-container" instance=ExtResource("5_a4s8r")]
+visible = false
 layout_mode = 1
 
 [node name="pomodoro" parent="apps-container" instance=ExtResource("6_6wfk4")]
@@ -188,6 +194,7 @@ offset_right = 64.0
 offset_bottom = -16.0
 
 [node name="focus" parent="apps-container" instance=ExtResource("8_4tvav")]
+visible = false
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
@@ -197,6 +204,7 @@ layout_mode = 1
 anchors_preset = 0
 
 [node name="menu" type="Control" parent="apps"]
+visible = false
 anchors_preset = 0
 
 [node name="background" type="ColorRect" parent="apps/menu"]

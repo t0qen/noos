@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0xmpy4w28tw"]
+[gd_scene load_steps=16 format=3 uid="uid://c0xmpy4w28tw"]
 
 [ext_resource type="PackedScene" uid="uid://c42gelag4evva" path="res://app/scenes/apps/schem.tscn" id="1_q43yx"]
 [ext_resource type="FontFile" uid="uid://y4i3q5orpibv" path="res://app/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf" id="2_nbf1j"]
@@ -29,12 +29,19 @@ font_color = Color(0.270222, 0.270222, 0.270222, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngvo3"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_xqge4"]
+font = ExtResource("2_nbf1j")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
 [node name="pomodoro" instance=ExtResource("1_q43yx")]
 anchors_preset = -1
 anchor_left = 0.05
 anchor_top = -0.02
 anchor_right = 0.4
 anchor_bottom = 0.62
+offset_right = -416.0
+offset_bottom = -472.0
 script = ExtResource("2_xqge4")
 
 [node name="app-container" parent="." index="0"]
@@ -42,23 +49,25 @@ visible = false
 
 [node name="background" type="ColorRect" parent="." index="1"]
 layout_mode = 0
-offset_left = -40.0
-offset_top = 40.0
-offset_right = 280.0
-offset_bottom = 760.0
+offset_left = 368.0
+offset_top = 192.0
+offset_right = 784.0
+offset_bottom = 528.0
 color = Color(0.85098, 0.85098, 0.85098, 1)
 
 [node name="buttons" type="Control" parent="." index="2"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 408.0
+offset_top = 144.0
+offset_right = 448.0
+offset_bottom = 184.0
 
 [node name="start" type="Button" parent="buttons" index="0"]
 layout_mode = 0
-offset_left = -24.0
-offset_top = 80.0
-offset_right = 74.0
-offset_bottom = 128.0
+offset_left = -32.0
+offset_top = 72.0
+offset_right = 66.0
+offset_bottom = 120.0
 theme_override_colors/font_hover_pressed_color = Color(0, 0.788235, 0, 1)
 theme_override_colors/font_hover_color = Color(0.419813, 0.419813, 0.419813, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -75,10 +84,10 @@ alignment = 0
 
 [node name="stop" type="Button" parent="buttons" index="1"]
 layout_mode = 0
-offset_left = -24.0
-offset_top = 192.0
-offset_right = 74.0
-offset_bottom = 240.0
+offset_left = -32.0
+offset_top = 136.0
+offset_right = 66.0
+offset_bottom = 184.0
 theme_override_colors/font_hover_pressed_color = Color(0, 0.788235, 0, 1)
 theme_override_colors/font_hover_color = Color(0.419813, 0.419813, 0.419813, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -95,10 +104,10 @@ alignment = 0
 
 [node name="toggle" type="Button" parent="buttons" index="2"]
 layout_mode = 0
-offset_left = -24.0
-offset_top = 304.0
-offset_right = 200.0
-offset_bottom = 352.0
+offset_left = -32.0
+offset_top = 200.0
+offset_right = 192.0
+offset_bottom = 248.0
 theme_override_colors/font_hover_pressed_color = Color(0, 0.788235, 0, 1)
 theme_override_colors/font_hover_color = Color(0.419813, 0.419813, 0.419813, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -115,59 +124,60 @@ alignment = 0
 
 [node name="labels" type="Control" parent="." index="3"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 408.0
+offset_top = 144.0
+offset_right = 448.0
+offset_bottom = 184.0
 
 [node name="Label" type="Label" parent="labels" index="0"]
 layout_mode = 0
 offset_left = -32.0
-offset_top = 48.0
+offset_top = 56.0
 offset_right = 212.0
-offset_bottom = 71.0
-text = "# Start pomodoro / switch "
+offset_bottom = 79.0
+text = "Start pomodoro / switch "
 label_settings = SubResource("LabelSettings_ngvo3")
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="labels" index="1"]
 layout_mode = 0
 offset_left = -32.0
-offset_top = 160.0
+offset_top = 120.0
 offset_right = 128.0
-offset_bottom = 183.0
-text = "# Stop pomodoro "
+offset_bottom = 143.0
+text = "Stop pomodoro "
 label_settings = SubResource("LabelSettings_ngvo3")
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="labels" index="2"]
+[node name="Label3" type="Label" parent="labels" index="2"]
 layout_mode = 0
 offset_left = -32.0
-offset_top = 384.0
-offset_right = 250.0
-offset_bottom = 480.0
-text = "# Customize session durations,
-  default is 25/5; enter value
-  in minute. Type enter when 
-  you have finished. 
-  (Will stop current pomodro)"
+offset_top = 184.0
+offset_right = 216.0
+offset_bottom = 207.0
+text = "Pause or resume pomodoro"
+label_settings = SubResource("LabelSettings_ngvo3")
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="labels" index="3"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 240.0
+offset_right = 334.0
+offset_bottom = 347.0
+text = "Customize session durations, 
+the default is 25/5. Just enter the value 
+in minute and type enter.
+"
 label_settings = SubResource("LabelSettings_ricr6")
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="labels" index="3"]
-layout_mode = 0
-offset_left = -32.0
-offset_top = 272.0
-offset_right = 212.0
-offset_bottom = 295.0
-text = "# Pause or resume pomodoro"
-label_settings = SubResource("LabelSettings_ngvo3")
 vertical_alignment = 1
 
 [node name="work_input" type="LineEdit" parent="." index="4"]
 layout_mode = 0
-offset_left = -16.0
-offset_top = 504.0
-offset_right = 232.0
-offset_bottom = 544.0
+offset_left = 368.0
+offset_top = 464.0
+offset_right = 448.0
+offset_bottom = 504.0
 theme_override_colors/font_placeholder_color = Color(0.450648, 0.450648, 0.450648, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_nbf1j")
@@ -176,16 +186,17 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_nbf1j")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_xqge4")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ngvo3")
 text = "25"
-placeholder_text = "work duration"
+placeholder_text = "work"
+alignment = 2
 max_length = 2
 flat = true
 
 [node name="break_input" type="LineEdit" parent="." index="5"]
 layout_mode = 0
-offset_left = -16.0
-offset_top = 544.0
-offset_right = 240.0
-offset_bottom = 584.0
+offset_left = 480.0
+offset_top = 464.0
+offset_right = 584.0
+offset_bottom = 504.0
 theme_override_colors/font_placeholder_color = Color(0.450648, 0.450648, 0.450648, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_nbf1j")
@@ -194,9 +205,19 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_nbf1j")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_xqge4")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ngvo3")
 text = "5"
-placeholder_text = "break duration"
+placeholder_text = "break "
 max_length = 2
 flat = true
+
+[node name="Label" type="Label" parent="." index="6"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 464.0
+offset_right = 474.0
+offset_bottom = 504.0
+text = "/"
+label_settings = SubResource("LabelSettings_xqge4")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="buttons/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="buttons/stop" to="." method="_on_stop_pressed"]

@@ -24,7 +24,6 @@ func update_clock():
 	
 func update_clock_label(value):
 	clock_label.text = value
-	focus_node.change_clock(value)
 #endregion
 	
 #region APPS MANAGEMENT
@@ -144,7 +143,7 @@ func stop_pomo():
 		
 func start_pomo():
 	if current_pomo_state in [POMO_STATE.STOPPED, POMO_STATE.BREAK, POMO_STATE.NOTLAUNCHED]:
-		
+		break_modulation(false)
 		pomo_timer.start(work_value * 60)
 		current_pomo_state = POMO_STATE.WORK
 	elif current_pomo_state == POMO_STATE.WORK:
@@ -184,15 +183,15 @@ func update_pomo_state_display():
 
 	match current_pomo_state:
 		POMO_STATE.NOTLAUNCHED:
-			update_pomo_state("NOT LAUNCHED")
+			update_pomo_state("not launched")
 		POMO_STATE.WORK:
-			update_pomo_state("WORKING")
+			update_pomo_state("working")
 		POMO_STATE.BREAK:
-			update_pomo_state("BREAK")
+			update_pomo_state("break")
 		POMO_STATE.PAUSED:
-			update_pomo_state("PAUSED")
+			update_pomo_state("paused")
 		POMO_STATE.STOPPED:
-			update_pomo_state("STOPPED")
+			update_pomo_state("stopped")
 
 func update_pomo_label(value):
 	pomo_label.text = value
@@ -276,7 +275,7 @@ func _ready() -> void:
 		break_value = int(break_file.get_as_text())
 		print("BREAK ", break_value)
 
-var is_blue_light_filter_enabled : bool = true
+var is_blue_light_filter_enabled : bool = false
 func blue_light_filter(toggle : bool):
 	print(toggle)
 	is_blue_light_filter_enabled = toggle

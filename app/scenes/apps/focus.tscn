@@ -1,25 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dha8ggw31lj02"]
+[gd_scene load_steps=5 format=3 uid="uid://dha8ggw31lj02"]
 
 [ext_resource type="PackedScene" uid="uid://c42gelag4evva" path="res://app/scenes/apps/schem.tscn" id="1_s3tgs"]
 [ext_resource type="Script" uid="uid://op01unhwnsn7" path="res://app/scripts/apps/focus.gd" id="2_ltth3"]
 [ext_resource type="FontFile" uid="uid://csjontt8cwpdh" path="res://app/assets/fonts/0xProtoNerdFontMono-Regular.ttf" id="3_4p7rq"]
-[ext_resource type="FontFile" uid="uid://y4i3q5orpibv" path="res://app/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf" id="3_ltth3"]
-[ext_resource type="FontFile" uid="uid://dx6artrb2wbgo" path="res://app/assets/fonts/MesloLGLNerdFontPropo-Italic.ttf" id="5_li6sj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_li6sj"]
 font = ExtResource("3_4p7rq")
 font_size = 100
-font_color = Color(0.450648, 0.450648, 0.450648, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_nijac"]
-font = ExtResource("3_ltth3")
-font_size = 28
-font_color = Color(0.513726, 0.513726, 0.513726, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_fnrig"]
-font = ExtResource("5_li6sj")
-font_size = 35
-font_color = Color(0.513233, 0.513233, 0.513233, 1)
+font_color = Color(0.165656, 0.165656, 0.165656, 1)
 
 [node name="focus" instance=ExtResource("1_s3tgs")]
 offset_right = -1248.0
@@ -42,27 +30,5 @@ offset_right = 840.0
 offset_bottom = 368.0
 text = "25:00"
 label_settings = SubResource("LabelSettings_li6sj")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="date" type="Label" parent="." index="3"]
-layout_mode = 0
-offset_left = 536.0
-offset_top = 336.0
-offset_right = 744.0
-offset_bottom = 408.0
-text = "samedi 23"
-label_settings = SubResource("LabelSettings_nijac")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="clock" type="Label" parent="." index="4"]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 376.0
-offset_right = 768.0
-offset_bottom = 443.0
-text = "12:05"
-label_settings = SubResource("LabelSettings_fnrig")
 horizontal_alignment = 1
 vertical_alignment = 1
