@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://d044efxhevqao"]
+[gd_scene load_steps=29 format=4 uid="uid://d044efxhevqao"]
 
 [ext_resource type="Script" uid="uid://y81ifsap2bbd" path="res://app/scripts/main.gd" id="1_f5sui"]
 [ext_resource type="FontFile" uid="uid://csjontt8cwpdh" path="res://app/assets/fonts/0xProtoNerdFontMono-Regular.ttf" id="2_114d7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://0nqgr0b24wfr" path="res://app/scenes/apps/notes.tscn" id="5_a4s8r"]
 [ext_resource type="PackedScene" uid="uid://c0xmpy4w28tw" path="res://app/scenes/apps/pomodoro.tscn" id="6_6wfk4"]
 [ext_resource type="PackedScene" uid="uid://dha8ggw31lj02" path="res://app/scenes/apps/focus.tscn" id="8_4tvav"]
+[ext_resource type="Script" uid="uid://bsx13m31rcyax" path="res://app/scripts/apps/quit_dialog.gd" id="11_2gjwp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sagw5"]
 font = ExtResource("2_114d7")
@@ -26,10 +27,30 @@ font = ExtResource("4_2gjwp")
 font_size = 41
 font_color = Color(0.450648, 0.450648, 0.450648, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2x37a"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gjwp"]
+bg_color = Color(0.890196, 0.890196, 0.890196, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.890196, 0.890196, 0.890196, 1)
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="LabelSettings" id="LabelSettings_3hhq3"]
 font = ExtResource("4_6wfk4")
 font_size = 38
-font_color = Color(0.45098, 0.45098, 0.45098, 1)
+font_color = Color(0.288518, 0.288518, 0.288518, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a4s8r"]
 
@@ -87,6 +108,31 @@ cache/0/50/0/glyphs/70/texture_idx = 0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hhq3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2x37a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usxsm"]
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 10
+shadow_offset = Vector2(0, 15)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_usxsm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e46wu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ypmom"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_brkun"]
+font = ExtResource("5_6wfk4")
+font_size = 31
+font_color = Color(0, 0, 0, 1)
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -177,6 +223,7 @@ layout_mode = 1
 anchors_preset = 0
 
 [node name="settings" parent="apps-container" instance=ExtResource("4_3hhq3")]
+visible = false
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
@@ -186,7 +233,6 @@ visible = false
 layout_mode = 1
 
 [node name="pomodoro" parent="apps-container" instance=ExtResource("6_6wfk4")]
-visible = false
 layout_mode = 1
 offset_left = 64.0
 offset_top = -16.0
@@ -207,20 +253,21 @@ anchors_preset = 0
 visible = false
 anchors_preset = 0
 
-[node name="background" type="ColorRect" parent="apps/menu"]
+[node name="background3" type="Panel" parent="apps/menu"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 528.0
+offset_top = 536.0
 offset_right = 328.0
-offset_bottom = 792.0
+offset_bottom = 752.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2x37a")
 
-[node name="background2" type="ColorRect" parent="apps/menu"]
+[node name="background4" type="Panel" parent="apps/menu"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 752.0
 offset_right = 328.0
 offset_bottom = 792.0
-color = Color(0.89059, 0.89059, 0.89059, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_2gjwp")
 
 [node name="labels" type="Control" parent="apps/menu"]
 anchors_preset = 0
@@ -409,13 +456,64 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3hhq3")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_2x37a")
 flat = true
 
-[node name="quit_dialog" type="ConfirmationDialog" parent="."]
-mode = 2
-title = "Quit menu"
-initial_position = 1
-size = Vector2i(350, 100)
-ok_button_text = "Quit"
-cancel_button_text = "No no I'm gonna focus on my work"
+[node name="quit_dialog" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_2gjwp")
+
+[node name="Panel" type="Panel" parent="quit_dialog"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 272.0
+offset_right = 832.0
+offset_bottom = 384.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_usxsm")
+
+[node name="yes" type="Button" parent="quit_dialog"]
+layout_mode = 0
+offset_left = 744.0
+offset_top = 328.0
+offset_right = 810.0
+offset_bottom = 374.0
+theme_override_colors/font_color = Color(0.237539, 0.237539, 0.237539, 1)
+theme_override_colors/font_pressed_color = Color(0.572988, 0.572988, 0.572988, 1)
+theme_override_fonts/font = ExtResource("5_6wfk4")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = SubResource("StyleBoxEmpty_usxsm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_e46wu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ypmom")
+text = "yes"
+flat = true
+
+[node name="no" type="Button" parent="quit_dialog"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 328.0
+offset_right = 703.0
+offset_bottom = 374.0
+theme_override_colors/font_color = Color(0.136826, 0.136826, 0.136826, 1)
+theme_override_colors/font_pressed_color = Color(0.572549, 0.572549, 0.572549, 1)
+theme_override_fonts/font = ExtResource("5_6wfk4")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = SubResource("StyleBoxEmpty_usxsm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_e46wu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ypmom")
+text = "Stay focused"
+flat = true
+
+[node name="Label" type="Label" parent="quit_dialog"]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 280.0
+offset_right = 728.0
+offset_bottom = 318.0
+text = "Quit ? "
+label_settings = SubResource("LabelSettings_brkun")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="pomo_restart_interval" type="Timer" parent="."]
 wait_time = 2.0
@@ -443,6 +541,7 @@ color = Color(0.758818, 0.555032, 0.234345, 1)
 [connection signal="pressed" from="apps/menu/btns/settings_btn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="apps/menu/btns/quit_btn" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="apps/toggle" to="." method="_on_toggle_pressed"]
-[connection signal="confirmed" from="quit_dialog" to="." method="_on_quit_dialog_confirmed"]
+[connection signal="pressed" from="quit_dialog/yes" to="quit_dialog" method="_on_yes_pressed"]
+[connection signal="pressed" from="quit_dialog/no" to="quit_dialog" method="_on_no_pressed"]
 [connection signal="timeout" from="pomo_restart_interval" to="." method="_on_pomo_restart_interval_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

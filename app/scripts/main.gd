@@ -35,12 +35,12 @@ func _on_toggle_pressed() -> void:
 	print("toggle")
 	if toggle_menu:
 		menu.show()
-		AudioManager.play("menu")
+		AudioManager.play("button")
 		if current_app == APPS.FOCUS:
 			apps_label.text = "focus on pomo"
 	else:
 		menu.hide()
-		AudioManager.play("menu")
+		AudioManager.play("button")
 		if current_app == APPS.FOCUS:
 			apps_label.text = "x"
 			
@@ -104,12 +104,12 @@ func _on_settings_btn_pressed() -> void:
 	update_app_display()
 
 func _on_quit_btn_pressed() -> void:
+	menu.hide()	
+	toggle_menu = true
 	AudioManager.play("button")
 	$quit_dialog.show()
 
-func _on_quit_dialog_confirmed() -> void:
-	AudioManager.play("button")
-	get_tree().quit()
+
 #endregion
 			
 #region POMODORO

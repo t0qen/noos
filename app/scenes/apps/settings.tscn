@@ -1,10 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://df6y383trua7o"]
+[gd_scene load_steps=16 format=3 uid="uid://df6y383trua7o"]
 
 [ext_resource type="PackedScene" uid="uid://c42gelag4evva" path="res://app/scenes/apps/schem.tscn" id="1_mjjyt"]
 [ext_resource type="FontFile" uid="uid://b3f143kxupihc" path="res://app/assets/fonts/MesloLGMNerdFontPropo-Bold.ttf" id="2_r37u7"]
 [ext_resource type="Script" uid="uid://ccax6xg64kkmg" path="res://app/scripts/apps/settings.gd" id="2_y6p8u"]
 [ext_resource type="FontFile" uid="uid://bjpvol8rhvix7" path="res://app/assets/fonts/CaskaydiaMonoNerdFontMono-Regular.ttf" id="4_r37u7"]
 [ext_resource type="FontFile" uid="uid://y4i3q5orpibv" path="res://app/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf" id="4_x65ee"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6p8u"]
+bg_color = Color(0.85098, 0.85098, 0.85098, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.85098, 0.85098, 0.85098, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_tapmq"]
 font = ExtResource("2_r37u7")
@@ -40,19 +52,19 @@ script = ExtResource("2_y6p8u")
 [node name="app-container" parent="." index="0"]
 visible = false
 
-[node name="background" type="ColorRect" parent="." index="1"]
+[node name="background" type="Panel" parent="." index="1"]
 layout_mode = 0
-offset_left = 272.0
+offset_left = 288.0
 offset_top = 128.0
-offset_right = 1008.0
-offset_bottom = 520.0
-color = Color(0.85098, 0.85098, 0.85098, 1)
+offset_right = 992.0
+offset_bottom = 512.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y6p8u")
 
 [node name="settings" type="Control" parent="." index="2"]
 anchors_preset = 0
-offset_left = 248.0
+offset_left = 264.0
 offset_top = 104.0
-offset_right = 288.0
+offset_right = 304.0
 offset_bottom = 144.0
 
 [node name="main label" type="Label" parent="settings" index="0"]

@@ -1,9 +1,24 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0xmpy4w28tw"]
+[gd_scene load_steps=17 format=3 uid="uid://c0xmpy4w28tw"]
 
 [ext_resource type="PackedScene" uid="uid://c42gelag4evva" path="res://app/scenes/apps/schem.tscn" id="1_q43yx"]
 [ext_resource type="FontFile" uid="uid://y4i3q5orpibv" path="res://app/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf" id="2_nbf1j"]
 [ext_resource type="Script" uid="uid://cek02pj1mfyhl" path="res://app/scripts/apps/pomodoro.gd" id="2_xqge4"]
 [ext_resource type="FontFile" uid="uid://bjpvol8rhvix7" path="res://app/assets/fonts/CaskaydiaMonoNerdFontMono-Regular.ttf" id="3_xqge4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqge4"]
+bg_color = Color(0.85098, 0.85098, 0.85098, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.85098, 0.85098, 0.85098, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 9
+shadow_offset = Vector2(0, 6)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ricr6"]
 
@@ -47,19 +62,19 @@ script = ExtResource("2_xqge4")
 [node name="app-container" parent="." index="0"]
 visible = false
 
-[node name="background" type="ColorRect" parent="." index="1"]
+[node name="background" type="Panel" parent="." index="1"]
 layout_mode = 0
-offset_left = 368.0
+offset_left = 376.0
 offset_top = 192.0
-offset_right = 784.0
-offset_bottom = 528.0
-color = Color(0.85098, 0.85098, 0.85098, 1)
+offset_right = 776.0
+offset_bottom = 512.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xqge4")
 
 [node name="buttons" type="Control" parent="." index="2"]
 anchors_preset = 0
-offset_left = 408.0
+offset_left = 416.0
 offset_top = 144.0
-offset_right = 448.0
+offset_right = 456.0
 offset_bottom = 184.0
 
 [node name="start" type="Button" parent="buttons" index="0"]
@@ -124,9 +139,9 @@ alignment = 0
 
 [node name="labels" type="Control" parent="." index="3"]
 anchors_preset = 0
-offset_left = 408.0
+offset_left = 416.0
 offset_top = 144.0
-offset_right = 448.0
+offset_right = 456.0
 offset_bottom = 184.0
 
 [node name="Label" type="Label" parent="labels" index="0"]
@@ -174,9 +189,9 @@ vertical_alignment = 1
 
 [node name="work_input" type="LineEdit" parent="." index="4"]
 layout_mode = 0
-offset_left = 368.0
+offset_left = 376.0
 offset_top = 464.0
-offset_right = 448.0
+offset_right = 456.0
 offset_bottom = 504.0
 theme_override_colors/font_placeholder_color = Color(0.450648, 0.450648, 0.450648, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -193,9 +208,9 @@ flat = true
 
 [node name="break_input" type="LineEdit" parent="." index="5"]
 layout_mode = 0
-offset_left = 480.0
+offset_left = 488.0
 offset_top = 464.0
-offset_right = 584.0
+offset_right = 592.0
 offset_bottom = 504.0
 theme_override_colors/font_placeholder_color = Color(0.450648, 0.450648, 0.450648, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -211,9 +226,9 @@ flat = true
 
 [node name="Label" type="Label" parent="." index="6"]
 layout_mode = 0
-offset_left = 456.0
+offset_left = 464.0
 offset_top = 464.0
-offset_right = 474.0
+offset_right = 482.0
 offset_bottom = 504.0
 text = "/"
 label_settings = SubResource("LabelSettings_xqge4")
