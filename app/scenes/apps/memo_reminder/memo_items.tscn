@@ -1,0 +1,120 @@
+[gd_scene load_steps=12 format=3 uid="uid://cjpcvbuuqwnwj"]
+
+[ext_resource type="FontFile" uid="uid://b3f143kxupihc" path="res://app/assets/fonts/MesloLGMNerdFontPropo-Bold.ttf" id="1_5y0bl"]
+[ext_resource type="Script" uid="uid://oo81v71twq0v" path="res://app/scripts/apps/memo_items.gd" id="1_v70p2"]
+[ext_resource type="FontFile" uid="uid://b8hd84tfqnoqy" path="res://app/assets/fonts/CaskaydiaMonoNerdFontMono-SemiBoldItalic.ttf" id="2_v70p2"]
+[ext_resource type="FontFile" uid="uid://bjpvol8rhvix7" path="res://app/assets/fonts/CaskaydiaMonoNerdFontMono-Regular.ttf" id="3_xvse1"]
+[ext_resource type="FontFile" uid="uid://d1n0ho86latqk" path="res://app/assets/fonts/0xProtoNerdFontPropo-Bold.ttf" id="4_i1j7v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ivf2"]
+bg_color = Color(0.74978, 0.74978, 0.74978, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.74902, 0.74902, 0.74902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4e2cx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vrj1s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_femmq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w1t5p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt2cs"]
+
+[node name="memo_items" type="Control"]
+custom_minimum_size = Vector2(1184, 56)
+layout_mode = 3
+anchor_left = 0.037
+anchor_right = 0.962
+anchor_bottom = 0.07
+offset_left = -47.36
+offset_right = -47.3601
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v70p2")
+
+[node name="app-container" type="ReferenceRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+border_width = 3.0
+
+[node name="next_bg" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 8.0
+offset_right = 1080.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ivf2")
+
+[node name="next" type="Label" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 8.0
+offset_right = 1080.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.147672, 0.147672, 0.147672, 1)
+theme_override_fonts/font = ExtResource("1_5y0bl")
+theme_override_font_sizes/font_size = 23
+text = "dans x jour "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="from" type="Label" parent="."]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 8.0
+offset_right = 712.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.255659, 0.255659, 0.255659, 1)
+theme_override_fonts/font = ExtResource("2_v70p2")
+theme_override_font_sizes/font_size = 23
+text = "26/08"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 477.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.147672, 0.147672, 0.147672, 1)
+theme_override_fonts/font = ExtResource("3_xvse1")
+theme_override_font_sizes/font_size = 20
+text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+vertical_alignment = 1
+
+[node name="kill" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1128.0
+offset_top = 8.0
+offset_right = 1168.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.442911, 0.442911, 0.442911, 1)
+theme_override_fonts/font = ExtResource("4_i1j7v")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4e2cx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_vrj1s")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_femmq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_w1t5p")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yt2cs")
+text = "x"
+flat = true
+
+[connection signal="pressed" from="kill" to="." method="_on_kill_pressed"]
