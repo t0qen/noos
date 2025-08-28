@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://d044efxhevqao"]
+[gd_scene load_steps=30 format=4 uid="uid://d044efxhevqao"]
 
 [ext_resource type="Script" uid="uid://y81ifsap2bbd" path="res://app/scripts/main.gd" id="1_f5sui"]
 [ext_resource type="FontFile" uid="uid://csjontt8cwpdh" path="res://app/assets/fonts/0xProtoNerdFontMono-Regular.ttf" id="2_114d7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://0nqgr0b24wfr" path="res://app/scenes/apps/notes.tscn" id="5_a4s8r"]
 [ext_resource type="PackedScene" uid="uid://c0xmpy4w28tw" path="res://app/scenes/apps/pomodoro.tscn" id="6_6wfk4"]
 [ext_resource type="PackedScene" uid="uid://dha8ggw31lj02" path="res://app/scenes/apps/focus.tscn" id="8_4tvav"]
+[ext_resource type="PackedScene" uid="uid://dbfuvxumfy2hb" path="res://app/scenes/apps/memo.tscn" id="9_usxsm"]
 [ext_resource type="Script" uid="uid://bsx13m31rcyax" path="res://app/scripts/apps/quit_dialog.gd" id="11_2gjwp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sagw5"]
@@ -245,18 +246,22 @@ layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
 
+[node name="memo" parent="apps-container" instance=ExtResource("9_usxsm")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+
 [node name="apps" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 0
 
 [node name="menu" type="Control" parent="apps"]
-visible = false
 anchors_preset = 0
 
 [node name="background3" type="Panel" parent="apps/menu"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 536.0
+offset_top = 496.0
 offset_right = 328.0
 offset_bottom = 752.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2x37a")
@@ -340,7 +345,7 @@ text = "settings"
 label_settings = SubResource("LabelSettings_3hhq3")
 vertical_alignment = 1
 
-[node name="quit" type="Label" parent="apps/menu/labels"]
+[node name="memo" type="Label" parent="apps/menu/labels"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -351,6 +356,23 @@ offset_left = 24.0
 offset_top = 536.0
 offset_right = 568.0
 offset_bottom = 592.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "memo reminder"
+label_settings = SubResource("LabelSettings_3hhq3")
+vertical_alignment = 1
+
+[node name="quit" type="Label" parent="apps/menu/labels"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 496.0
+offset_right = 568.0
+offset_bottom = 552.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "quit app :("
@@ -413,12 +435,25 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_a4s8r")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_6wfk4")
 flat = true
 
-[node name="quit_btn" type="Button" parent="apps/menu/btns"]
+[node name="memo_btn" type="Button" parent="apps/menu/btns"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 544.0
 offset_right = 328.0
 offset_bottom = 584.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_6wfk4")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a4s8r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6wfk4")
+flat = true
+
+[node name="quit_btn" type="Button" parent="apps/menu/btns"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 504.0
+offset_right = 328.0
+offset_bottom = 544.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_6wfk4")
 theme_override_font_sizes/font_size = 26
@@ -539,6 +574,7 @@ color = Color(0.758818, 0.555032, 0.234345, 1)
 [connection signal="pressed" from="apps/menu/btns/notes_btn" to="." method="_on_notes_btn_pressed"]
 [connection signal="pressed" from="apps/menu/btns/pomo_date_btn" to="." method="_on_pomo_date_btn_pressed"]
 [connection signal="pressed" from="apps/menu/btns/settings_btn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="apps/menu/btns/memo_btn" to="." method="_on_memo_btn_pressed"]
 [connection signal="pressed" from="apps/menu/btns/quit_btn" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="apps/toggle" to="." method="_on_toggle_pressed"]
 [connection signal="pressed" from="quit_dialog/yes" to="quit_dialog" method="_on_yes_pressed"]

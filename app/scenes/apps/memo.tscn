@@ -83,16 +83,11 @@ flat = true
 caret_blink = true
 
 [node name="add" type="Button" parent="." index="4"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 12.667
-anchor_bottom = 5.0
+layout_mode = 0
 offset_left = 808.0
 offset_top = 704.0
-offset_right = 553.992
-offset_bottom = 616.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 864.0
+offset_bottom = 738.0
 theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
 theme_override_fonts/font = ExtResource("2_61ogc")
 theme_override_font_sizes/font_size = 21

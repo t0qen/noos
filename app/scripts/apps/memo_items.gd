@@ -4,28 +4,21 @@ var from
 var last
 
 
-var memo_interval = {1: 1, 2: 7, 3: 30, 4: 120}
+var memo_interval = {1: 1, 2: 3, 3: 7, 4: 14, 5: 31, 6: 93, 7: 186}
 var current_memo_interval : int = 1
 var next_memo
 var creation_date = []
 
 var months = {1: 31, 2: 30, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31}
 
-
-#var study_interval = {1 (premiere fois) : 2 (combien jour), 2 : 4} 
-#var current_interval = 2 (will be saved)
-#
-#func (): # avoir le nombre de jours entre from et strudy_interval(current)
-#	from + stody_interval(current) = supposed date** 31 ou 30**
-#   avoir le nombre de jours entre current date et supposed date
-#	.text = "dans {output} jours"
-#
+signal delete(item_name)
 
 func _ready() -> void:
 	print(calculate_next())
 	
 	
 func _on_kill_pressed() -> void:
+	delete.emit($name.text)
 	queue_free()
 
 func set_contents(item_name : String, from_value : String, from_fromated):
@@ -39,17 +32,24 @@ func get_last(): # last time we had to study this
 func calculate_next():
 	var current_date = [] # if just created, else 'fromfromated'
 
-	current_date = [29, 8, 2025]
+	current_date = [28, 8, 2025]
 	creation_date = [28, 8, 2025]
 	
+	
 	next_memo = get_next_date(creation_date, memo_interval.get(current_memo_interval)) 
+	
+	
 	print("next ", next_memo)
 	print(compare_date(next_memo, current_date))
 	while compare_date(next_memo, current_date) == true:
 		print("decal")
 		current_memo_interval = current_memo_interval + 1
+		if current_memo_interval > memo_interval.values().size():
+			print("FINISHED")
+			current_memo_interval = 1
 		next_memo = get_next_date(current_date, memo_interval.get(current_memo_interval)) 
-		
+	
+	change_next_label(next_memo, memo_interval.get(current_memo_interval))
 	return next_memo
 	
 func get_next_date(date, days_to_add):
@@ -80,26 +80,18 @@ func compare_date(date1, date2): # return true if date2 >>
 	return output
 
 		
-		
-		
-		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-func get_latest():
-	pass
-	
-#func additionate_date(var ):
+func change_next_label(date, days_to_add):
+	if days_to_add > 1:
+		var day = date[0]
+		var month = date[1]
+		if day < 10:
+			day = "0" + str(day)
+		if month < 10:
+			month = "0" + str(month)
+			
+		$next.text = "dans" + days_to_add + "jours, le " + day + "/" + month
+	else:
+		$next.text = "demain"	
 	
 	
 	
