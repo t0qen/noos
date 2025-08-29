@@ -34,8 +34,10 @@ layout_mode = 3
 anchor_left = 0.037
 anchor_right = 0.962
 anchor_bottom = 0.07
-offset_left = -47.36
-offset_right = -47.3601
+offset_left = -46.3601
+offset_top = 2.0
+offset_right = -46.36
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v70p2")
@@ -56,31 +58,31 @@ border_width = 3.0
 
 [node name="from_bg" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 584.0
-offset_top = 8.0
-offset_right = 736.0
-offset_bottom = 48.0
+offset_left = 535.0
+offset_top = 6.0
+offset_right = 687.0
+offset_bottom = 46.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ivf2")
 
 [node name="next" type="Label" parent="."]
 layout_mode = 0
-offset_left = 760.0
-offset_top = 8.0
-offset_right = 1092.0
-offset_bottom = 48.0
+offset_left = 727.0
+offset_top = 6.0
+offset_right = 1115.0
+offset_bottom = 46.0
 theme_override_colors/font_color = Color(0.147672, 0.147672, 0.147672, 1)
 theme_override_fonts/font = ExtResource("1_5y0bl")
 theme_override_font_sizes/font_size = 23
-text = "demain"
+text = "dans 12 jours, le 12/06/2025"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="from" type="Label" parent="."]
 layout_mode = 0
-offset_left = 592.0
-offset_top = 8.0
-offset_right = 720.0
-offset_bottom = 48.0
+offset_left = 543.0
+offset_top = 6.0
+offset_right = 678.0
+offset_bottom = 46.0
 theme_override_colors/font_color = Color(0.255659, 0.255659, 0.255659, 1)
 theme_override_fonts/font = ExtResource("2_v70p2")
 theme_override_font_sizes/font_size = 23

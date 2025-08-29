@@ -19,7 +19,7 @@ func add_item(item_name : String):
 	var current_item = item.instantiate()
 	$ScrollContainer/VBoxContainer.add_child(current_item)
 	current_item.connect("delete", delete_item)
-	
+	print("add")
 	# current date
 	var datetime = Time.get_datetime_dict_from_system()
 	var day = datetime.day
@@ -30,7 +30,8 @@ func add_item(item_name : String):
 		month = "0" + str(month)
 		
 	var output : String = str(day) + "/" + str(month) + "/" + str(datetime.year)
-	var from = [datetime.day, datetime.month, datetime.year]
+	var from = [int(datetime.day), int(datetime.month), int(datetime.year)]
+	print("add2")
 	current_item.set_contents(item_name, output, from)
 
 	var data = []
