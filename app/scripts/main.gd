@@ -56,7 +56,8 @@ enum APPS {
 	NOTES,
 	FOCUS,
 	SETTINGS,
-	MEMO
+	MEMO,
+	HELP
 }
 var current_app : APPS = APPS.NOTES
 
@@ -85,6 +86,9 @@ func update_app_display():
 		APPS.MEMO:
 			$"apps-container/memo".show()
 			apps_label.text = "memo reminder"
+		APPS.HELP:
+			$"apps-container/help".show()
+			apps_label.text = "help"
 			
 			
 func _on_pomo_settings_btn_pressed() -> void:
@@ -113,6 +117,12 @@ func _on_memo_btn_pressed() -> void:
 	current_app = APPS.MEMO
 	update_app_display()
 
+
+func _on_help_btn_pressed() -> void:
+	AudioManager.play("button")
+	current_app = APPS.MEMO
+	update_app_display()
+	
 func _on_quit_btn_pressed() -> void:
 	menu.hide()	
 	toggle_menu = true

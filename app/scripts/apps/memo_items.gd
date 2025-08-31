@@ -65,8 +65,7 @@ func calculate_next():
 			print("decal")
 			current_memo_interval = current_memo_interval + 1
 			if current_memo_interval > memo_interval.values().size():
-				print("FINISHED")
-				return
+				queue_free()
 			print("to add ",  memo_interval.get(current_memo_interval))
 			next_memo = get_next_date(prev_memo, memo_interval.get(current_memo_interval)) 
 			prev_memo = next_memo
@@ -129,7 +128,7 @@ func change_next_label(date, days_to_add):
 		if month < 10:
 			month = "0" + str(month)
 			
-		$next.text = "dans " + str(days_to_add) + " jours, le " + str(day) + "/" + str(month) + "/" + str(date[2])
+		$next.text = "in " + str(days_to_add) + " days, on " + str(day) + "/" + str(month) + "/" + str(date[2])
 	else:
 		if days_to_add == 0:
 			$next.text = "aujourd'hui"

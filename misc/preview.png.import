@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5mv55hp5pn2h"
-path="res://.godot/imported/base-plan.png-a2370b934ebf786c9834887de4c027ad.ctex"
+uid="uid://batk0ysm8fplw"
+path="res://.godot/imported/preview.png-f1539fdc3077b737cc424b5a793d2ca9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://misc/base-plan.png"
-dest_files=["res://.godot/imported/base-plan.png-a2370b934ebf786c9834887de4c027ad.ctex"]
+source_file="res://misc/preview.png"
+dest_files=["res://.godot/imported/preview.png-f1539fdc3077b737cc424b5a793d2ca9.ctex"]
 
 [params]
 

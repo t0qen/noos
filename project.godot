@@ -10,12 +10,16 @@ config_version=5
 
 [application]
 
-config/name="dashboard"
+config/name="noos"
 run/main_scene="uid://d044efxhevqao"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="productivity-dashboard"
+config/custom_user_dir_name="noos"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.873298, 0.873298, 0.873298, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://b8eh1v4ee7737"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=500
 
 [autoload]
 

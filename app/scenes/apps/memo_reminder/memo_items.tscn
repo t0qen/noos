@@ -29,7 +29,7 @@ corner_radius_bottom_left = 10
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt2cs"]
 
 [node name="memo_items" type="Control"]
-custom_minimum_size = Vector2(1184, 56)
+custom_minimum_size = Vector2(1184, 42)
 layout_mode = 3
 anchor_left = 0.037
 anchor_right = 0.962
@@ -66,14 +66,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0ivf2")
 
 [node name="next" type="Label" parent="."]
 layout_mode = 0
-offset_left = 727.0
+offset_left = 711.0
 offset_top = 6.0
-offset_right = 1115.0
+offset_right = 1127.0
 offset_bottom = 46.0
 theme_override_colors/font_color = Color(0.147672, 0.147672, 0.147672, 1)
 theme_override_fonts/font = ExtResource("1_5y0bl")
 theme_override_font_sizes/font_size = 23
-text = "dans 12 jours, le 12/06/2025"
+text = "in 12 days, at 12/06/2025 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -104,9 +104,9 @@ vertical_alignment = 1
 
 [node name="kill" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1128.0
-offset_top = 8.0
-offset_right = 1168.0
+offset_left = 1135.0
+offset_top = -2.0
+offset_right = 1175.0
 offset_bottom = 48.0
 theme_override_colors/font_color = Color(0.442911, 0.442911, 0.442911, 1)
 theme_override_fonts/font = ExtResource("4_i1j7v")

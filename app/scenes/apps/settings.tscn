@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://df6y383trua7o"]
+[gd_scene load_steps=23 format=3 uid="uid://df6y383trua7o"]
 
 [ext_resource type="PackedScene" uid="uid://c42gelag4evva" path="res://app/scenes/apps/schem.tscn" id="1_mjjyt"]
 [ext_resource type="FontFile" uid="uid://b3f143kxupihc" path="res://app/assets/fonts/MesloLGMNerdFontPropo-Bold.ttf" id="2_r37u7"]
 [ext_resource type="Script" uid="uid://ccax6xg64kkmg" path="res://app/scripts/apps/settings.gd" id="2_y6p8u"]
 [ext_resource type="FontFile" uid="uid://bjpvol8rhvix7" path="res://app/assets/fonts/CaskaydiaMonoNerdFontMono-Regular.ttf" id="4_r37u7"]
 [ext_resource type="FontFile" uid="uid://y4i3q5orpibv" path="res://app/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf" id="4_x65ee"]
+[ext_resource type="Script" uid="uid://bsx13m31rcyax" path="res://app/scripts/apps/quit_dialog.gd" id="6_x65ee"]
+[ext_resource type="FontFile" uid="uid://d1n0ho86latqk" path="res://app/assets/fonts/0xProtoNerdFontPropo-Bold.ttf" id="7_0wfsq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6p8u"]
 bg_color = Color(0.85098, 0.85098, 0.85098, 1)
@@ -43,6 +45,31 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r37u7"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tapmq"]
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0, 0, 0, 0)
+shadow_size = 10
+shadow_offset = Vector2(0, 15)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qog7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8of6i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ybc3b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3feow"]
+font = ExtResource("7_0wfsq")
+font_size = 31
+font_color = Color(0, 0, 0, 1)
 
 [node name="settings" instance=ExtResource("1_mjjyt")]
 offset_right = -1240.0
@@ -210,7 +237,68 @@ offset_bottom = 377.0
 text = "Change global volume off the app"
 label_settings = SubResource("LabelSettings_4qog7")
 
+[node name="quit_dialog" type="Control" parent="." index="3"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_x65ee")
+
+[node name="Panel" type="Panel" parent="quit_dialog" index="0"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 272.0
+offset_right = 832.0
+offset_bottom = 384.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tapmq")
+
+[node name="yes" type="Button" parent="quit_dialog" index="1"]
+layout_mode = 0
+offset_left = 744.0
+offset_top = 328.0
+offset_right = 810.0
+offset_bottom = 374.0
+theme_override_colors/font_color = Color(0.237539, 0.237539, 0.237539, 1)
+theme_override_colors/font_pressed_color = Color(0.572988, 0.572988, 0.572988, 1)
+theme_override_fonts/font = ExtResource("7_0wfsq")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4qog7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8of6i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ybc3b")
+text = "yes"
+flat = true
+
+[node name="no" type="Button" parent="quit_dialog" index="2"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 328.0
+offset_right = 703.0
+offset_bottom = 374.0
+theme_override_colors/font_color = Color(0.136826, 0.136826, 0.136826, 1)
+theme_override_colors/font_pressed_color = Color(0.572549, 0.572549, 0.572549, 1)
+theme_override_fonts/font = ExtResource("7_0wfsq")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4qog7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8of6i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ybc3b")
+text = "no no no"
+flat = true
+
+[node name="Label" type="Label" parent="quit_dialog" index="3"]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 280.0
+offset_right = 795.0
+offset_bottom = 318.0
+text = "Clear all data ?"
+label_settings = SubResource("LabelSettings_3feow")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="toggled" from="settings/blue-light-filter/btn" to="." method="_on_btn_toggled"]
 [connection signal="toggled" from="settings/fullscreen/btn2" to="." method="_on_btn_2_toggled"]
 [connection signal="pressed" from="settings/clear-data/btn3" to="." method="_on_btn_3_pressed"]
 [connection signal="value_changed" from="settings/clear-data2/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="quit_dialog/yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="quit_dialog/no" to="." method="_on_no_pressed"]

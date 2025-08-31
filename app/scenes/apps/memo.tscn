@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbfuvxumfy2hb"]
+[gd_scene load_steps=15 format=3 uid="uid://dbfuvxumfy2hb"]
 
 [ext_resource type="PackedScene" uid="uid://c42gelag4evva" path="res://app/scenes/apps/schem.tscn" id="1_q01w4"]
 [ext_resource type="FontFile" uid="uid://d1n0ho86latqk" path="res://app/assets/fonts/0xProtoNerdFontPropo-Bold.ttf" id="2_61ogc"]
 [ext_resource type="Script" uid="uid://dpi67lwol2oh6" path="res://app/scripts/apps/memo_reminder.gd" id="2_7805a"]
 [ext_resource type="FontFile" uid="uid://y4i3q5orpibv" path="res://app/assets/fonts/JetBrainsMonoNerdFont-Medium.ttf" id="3_c2jno"]
+[ext_resource type="FontFile" uid="uid://bd0r7df3qbs1d" path="res://app/assets/fonts/JetBrainsMonoNerdFont-Light.ttf" id="5_c2jno"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q01w4"]
 bg_color = Color(0.85098, 0.85098, 0.85098, 1)
@@ -41,6 +42,10 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mmxd"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_d1538"]
+font = ExtResource("5_c2jno")
+font_color = Color(0.509286, 0.509286, 0.509286, 1)
+
 [node name="memo" instance=ExtResource("1_q01w4")]
 offset_right = -1256.0
 offset_bottom = -776.0
@@ -59,18 +64,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_q01w4")
 
 [node name="background2" type="Panel" parent="." index="2"]
 layout_mode = 0
-offset_left = 424.0
-offset_top = 704.0
-offset_right = 792.0
-offset_bottom = 736.0
+offset_left = 40.0
+offset_top = 696.0
+offset_right = 424.0
+offset_bottom = 728.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8uunl")
 
 [node name="input" type="LineEdit" parent="." index="3"]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 704.0
-offset_right = 784.0
-offset_bottom = 735.0
+offset_left = 48.0
+offset_top = 696.0
+offset_right = 424.0
+offset_bottom = 727.0
 theme_override_colors/caret_color = Color(0.521569, 0.521569, 0.521569, 1)
 theme_override_colors/font_placeholder_color = Color(0.359069, 0.359069, 0.359069, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -84,10 +89,10 @@ caret_blink = true
 
 [node name="add" type="Button" parent="." index="4"]
 layout_mode = 0
-offset_left = 808.0
-offset_top = 704.0
-offset_right = 864.0
-offset_bottom = 738.0
+offset_left = 432.0
+offset_top = 696.0
+offset_right = 488.0
+offset_bottom = 730.0
 theme_override_colors/font_color = Color(0.10748, 0.10748, 0.10748, 1)
 theme_override_fonts/font = ExtResource("2_61ogc")
 theme_override_font_sizes/font_size = 21
@@ -105,10 +110,20 @@ layout_mode = 0
 offset_left = 48.0
 offset_top = 48.0
 offset_right = 1232.0
-offset_bottom = 696.0
+offset_bottom = 680.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" index="0"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="." index="6"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 688.0
+offset_right = 1359.0
+offset_bottom = 735.0
+text = "Memo reminder uses the forgetting curve from Ebbinghaus. 
+You'll never forgot to revise a topic !"
+label_settings = SubResource("LabelSettings_d1538")
 
 [connection signal="text_submitted" from="input" to="." method="_on_input_text_submitted"]
 [connection signal="pressed" from="add" to="." method="_on_add_pressed"]

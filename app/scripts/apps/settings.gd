@@ -16,10 +16,9 @@ func _on_btn_2_toggled(toggled_on: bool) -> void:
 
 func _on_btn_3_pressed() -> void:
 	AudioManager.play("button")
-	for file in DirAccess.get_files_at("user://"):  
-		print(file)
-		DirAccess.remove_absolute("user://" + str(file))
-	get_tree().quit()
+	$quit_dialog.show()
+	
+	
 
 var is_saving : bool = false
 
@@ -40,3 +39,15 @@ func _ready() -> void:
 	var volume_file = FileAccess.open("user://volume.dat", FileAccess.READ)
 	if volume_file:
 		$"settings/clear-data2/HSlider".set_value_no_signal(int(volume_file.get_as_text()))
+
+
+func _on_yes_pressed() -> void:
+	AudioManager.play("button")
+	for file in DirAccess.get_files_at("user://"):  
+		print(file)
+		DirAccess.remove_absolute("user://" + str(file))
+	get_tree().quit()
+
+func _on_no_pressed() -> void:
+	AudioManager.play("button")
+	$quit_dialog.hide()
